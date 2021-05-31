@@ -1,0 +1,36 @@
+Create a Dockerfile for the Application
+Navigate to GitHub source code.
+Create personal fork of source repository by clicking Fork icon located in the upper right corner in GitHub.
+Create Docker file by clicking Create new file.
+Name the new file Dockerfile.
+Add the following information to the new Dockerfile:
+FROM node:carbon
+WORKDIR /usr/src/app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 8080
+CMD [ "npm", "start" ]
+Commit file by clicking Commit new file located at the bottom of the page.
+Copy the URL of your GitHub fork.
+Build a Docker Image Using the Dockerfile and Run It
+Login the Cloud Server using the provided credentials.
+Change to home directory:
+cd ~/
+Clone your personal fork of the source code repository using the copied URL GitHub repository:
+git clone https://github.com/insertyourusernamehere/cicd-pipeline-train-schedule-docker
+Change directory into the new folder:
+cd cicd-pipeline-train-schedule-docker/
+Verify GitHub file exists:
+ls -la
+View contents of the folder:
+cat Dockerfile
+Build a Docker image. (NOTE: It is best practice to use your Docker Hub username. If you do not have one, you are able to use any unique username using only lowercase.):
+sudo docker build -t <your username>/train-schedule .
+Run Docker application:
+sudo docker run -p 8080:8080 -d <your username>/train-schedule
+List and verify current running processes in Docker container:
+sudo docker ps
+Confirm the train schedule app is available by navigating to URL:
+http://<your learning activity environment public IP>:8080
+Conclusion
