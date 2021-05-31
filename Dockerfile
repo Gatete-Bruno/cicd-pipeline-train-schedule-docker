@@ -1,4 +1,5 @@
-FROM node:carbon
+FROM node:carbon 
+#comes with nodejs installed 
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
